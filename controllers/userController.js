@@ -82,14 +82,11 @@ exports.delete = async (req, res) => {
 // View Users
 exports.viewall = async (req, res) => {
 
-  // User the connection
-  connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
-    if (!err) {
-      res.render('view-user', { rows });
-    } else {
-      console.log(err);
-    }
-    console.log('The data from user table: \n', rows);
-  });
-
+  try{
+    const id = req.id;
+    rows = userModel.getUser(id);
+    res.render('view-user', { rows });
+  } catch(e){
+    console.log(e);
+  }
 }
