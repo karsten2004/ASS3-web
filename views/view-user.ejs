@@ -6,10 +6,10 @@
 </nav>
 
 <div class="view-user p-5">
-    <% rows.forEach(function (row) { %>
+    <% users.forEach(function (user) { %>
         <div class="row mb-5">
             <div class="col text-center">
-                <h3><%= row.first_name %> <%= row.last_name %></h3>
+                <h3><%= user.first_name %> <%= user.last_name %></h3>
             </div>
         </div>
         <div class="row">
@@ -25,10 +25,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <th scope="row"><%= row.first_name %></th>
-                        <td><%= row.last_name %></td>
-                        <td><%= row.email %></td>
-                        <td><%= row.phone %></td>
+                        <th scope="row"><%= user.first_name %></th>
+                        <td><%= user.last_name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.phone %></td>
                     </tr>
                     </tbody>
                 </table>
@@ -40,7 +40,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <%= row.comments %>
+                    <%= user.comments %>
                 </div>
             </div>
         </div>
