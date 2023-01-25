@@ -71,9 +71,30 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
     try{
         const id = req.params.id;
-        await userModel.deleteUser(id)
-        let removedUser = encodeURIComponent('User successeflly removed.');
-        res.redirect('/?removed=' + removedUser);
+        await userModel.setUserStatus(id, "removed")
+        res.redirect('/');
+    } catch(e){
+        console.log(e);
+    }
+}
+
+// Activate User
+exports.activate = async (req, res) => {
+    try{
+        const id = req.params.id;
+        await userModel.setUserStatus(id, "active");
+        res.redirect('/');
+    } catch(e){
+        console.log(e);
+    }
+}
+
+// Activate User
+exports.restore = async (req, res) => {
+    try{
+        const id = req.params.id;
+        await userModel.setUserStatus(id, "none");
+        res.redirect('/');
     } catch(e){
         console.log(e);
     }

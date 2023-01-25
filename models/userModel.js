@@ -10,7 +10,7 @@ let connection = mysql.createConnection({
 
 exports.getUsers = () => {
     return new Promise((resolve, reject) => {
-        connection.query('SELECT * FROM user WHERE status = "active"', (err, rows) => {
+        connection.query('SELECT * FROM user', (err, rows) => {
             if(err) reject(err);
             else resolve(rows);
         });
@@ -18,7 +18,6 @@ exports.getUsers = () => {
 }
 
 exports.findUser = (searchTerm) => {
-
     return new Promise((resolve, reject) => {
         // User the connection
         connection.query('SELECT * FROM user WHERE first_name LIKE ? OR last_name LIKE ?', 
@@ -30,7 +29,6 @@ exports.findUser = (searchTerm) => {
 }
 
 exports.createUser = (first_name, last_name, email, phone, comments ) => {
-
     return new Promise((resolve, reject) => {
         connection.query('INSERT INTO user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ?',
                             [first_name, last_name, email, phone, comments], (err, rows) => {
@@ -62,6 +60,15 @@ exports.updateUser = (first_name, last_name, email, phone, comments, id) => {
 exports.deleteUser = (id) => {
     return new Promise((resolve, reject) => {
         connection.query('UPDATE user SET status = ? WHERE id = ?', ['removed', id], (err, rows) => {
+            if(err) reject(err);
+            else resolve(rows);
+        });
+    });
+}
+
+exports.setUserStatus = (id, status) => {
+    return new Promise((resolve, reject) => {
+        connection.query('UPDATE user SET status = ? WHERE id = ?', [status, id], (err, rows) => {
             if(err) reject(err);
             else resolve(rows);
         });

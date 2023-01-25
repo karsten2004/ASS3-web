@@ -11,5 +11,7 @@ router.get('/edituser/:id', userController.edit);
 router.post('/edituser/:id', userController.update);
 router.get('/viewuser/:id', userController.viewall);
 router.get('/delete/:id',userController.delete);
+router.get('/activate/:id',userController.activate);
+router.get('/restore/:id',userController.restore);
   
 module.exports = router;
