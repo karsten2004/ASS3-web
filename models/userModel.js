@@ -1,6 +1,4 @@
-const e = require('express');
 const mysql = require('mysql');
-const { get } = require('../routes/user');
 
 // Connection Pool
 let connection = mysql.createConnection({
