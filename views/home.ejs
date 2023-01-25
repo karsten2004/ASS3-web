@@ -29,7 +29,7 @@
     <tbody>
 
     <% rows.forEach(function (row) { %>
-        <tr>
+        <tr style="background-color: <%- row.status === "active" ? "lightgreen" : "none" %>">
             <th scope="row"><%= row.id %></th>
             <td><%= row.first_name %></td>
             <td><%= row.last_name %></td>
