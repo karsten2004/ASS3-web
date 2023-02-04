@@ -72,7 +72,7 @@ exports.delete = async (req, res) => {
     try{
         const id = req.params.id;
         await userModel.setUserStatus(id, "removed")
-        res.redirect('/');
+        res.redirect('/?removed=y');
     } catch(e){
         console.log(e);
     }
